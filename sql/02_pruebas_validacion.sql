@@ -1,0 +1,67 @@
+-- =====================================================
+-- SQL-001: VERIFICAR LA EXISTENCIA DE DATOS
+-- Objetivo: Consultar las tablas usuarios y pedidos.
+-- Resultado esperado: Ambas consultas devuelven registros.
+-- =====================================================
+
+USE ecommerce_qa;
+SELECT *
+FROM pedidos;
+
+SELECT *
+FROM pedidos;
+
+-- =====================================================
+-- SQL-002: DETECTAR CORREOS DUPLICADOS
+-- Objetivo: Identificar correos registrados más de una vez.
+-- Resultado esperado: La consulta no devuelve registros.
+-- =====================================================
+
+SELECT correo, COUNT(*) AS cantidad
+FROM usuarios
+WHERE correo IS NOT NULL
+GROUP BY correo
+HAVING COUNT(*) > 1;
+
+-- =====================================================
+-- SQL-003: DETECTAR CORREOS FALTANTES
+-- Objetivo: Identificar usuarios sin correo registrado.
+-- Resultado esperado: La consulta no devuelve registros.
+-- =====================================================
+
+SELECT id, nombre, correo
+FROM usuarios
+WHERE correo IS NULL;
+
+-- =====================================================
+-- SQL-004: DETECTAR MONTOS INVÁLIDOS
+-- Objetivo: Identificar pedidos con montos iguales o inferiores a cero.
+-- Resultado esperado: La consulta no devuelve registros.
+-- =====================================================
+
+SELECT id AS pedido_id,
+	producto, 
+	monto
+FROM pedidos
+WHERE monto <= 0;
+
+-- =====================================================
+-- SQL-005: DETECTAR PEDIDOS SIN USUARIO VÁLIDO
+-- Objetivo: Identificar pedidos cuyo usuario no existe.
+-- Resultado esperado: La consulta no devuelve registros.
+-- =====================================================
+
+SELECT 
+	p.id AS pedido_id,
+    p.usuario_id,
+    p.producto,
+    p.monto
+FROM pedidos AS p
+LEFT JOIN usuarios AS u
+	ON u.id = p.usuario_id
+WHERE u.id IS NULL;
+
+-- =====================================================
+-- FIN DE LAS PRUEBAS DE VALIDACION
+-- =====================================================
+
