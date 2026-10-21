@@ -1,8 +1,13 @@
--- =====================================================
--- PROYECTO: E-COMMERCE QA
+-- ============================================
+-- PROYECTO: E-commerce QA
 -- ARCHIVO: 01_esquema_y_datos.sql
--- OBJETIVO: Crear tablas e insertar datos de prueba
--- =====================================================
+-- OBJETIVO: Crear la base de datos, las tablas
+-- e insertar datos para las pruebas de QA.
+-- ============================================
+
+CREATE DATABASE IF NOT EXISTS ecommerce_qa;
+
+USE ecommerce_qa;
 
 -- Tabla de usuarios
 CREATE TABLE usuarios (
