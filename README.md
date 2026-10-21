@@ -92,11 +92,13 @@ Se han definido y ejecutado consultas de validación para los casos SQL-002, SQL
 
 ## Próximas mejoras
 
-- Completar la verificación y documentación de SQL-001.
-- Crear reportes de bugs con pasos de reproducción, evidencia, severidad y prioridad.
-- Incorporar restricciones de integridad en el esquema de base de datos.
+## Próximas mejoras
+
+- Ampliar la cobertura de pruebas con la validación de identificadores de pedidos duplicados (SQL-006).
+- Documentar y verificar los resultados de cada caso de prueba con sus respectivas evidencias.
+- Incorporar restricciones de integridad en el esquema de base de datos, como claves foráneas y restricciones de unicidad.
 - Ampliar las pruebas con escenarios positivos y negativos.
-- Publicar evidencias de ejecución y mantener actualizado el repositorio.
+- Mantener actualizados los casos de prueba, los reportes de bugs y las evidencias de ejecución.
 
 ---
 

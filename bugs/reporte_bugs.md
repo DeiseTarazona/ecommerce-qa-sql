@@ -73,3 +73,21 @@
 - **Resultado obtenido:** El pedido con ID `101` tiene `usuario_id = 8`, pero no existe un usuario con ese identificador.
 - **Evidencia:** Resultado de SQL-005 en MySQL Workbench.
 - **Conclusión de QA:** Se detectó una inconsistencia de integridad referencial. Se recomienda revisar la relación entre usuarios y pedidos.
+
+---
+
+## BUG-005: Identificadores de pedidos duplicados
+
+- **Caso de prueba relacionado:** SQL-006.
+- **Módulo:** Pedidos.
+- **Severidad:** Alta.
+- **Prioridad:** Alta.
+- **Estado:** Abierto.
+- **Descripción:** Se detectó que dos pedidos comparten el identificador `101`.
+- **Pasos para reproducir:**
+  1. Ejecutar la consulta SQL-006.
+  2. Revisar los identificadores devueltos.
+- **Resultado esperado:** Cada pedido debe tener un identificador único.
+- **Resultado obtenido:** El identificador `101` aparece dos veces, asociado a Laptop y Audifonos.
+- **Evidencia:** Captura de SQL-006 en MySQL Workbench.
+- **Conclusión de QA:** Se identificó una inconsistencia de integridad de datos. Se recomienda revisar la definición de la clave primaria de la tabla `pedidos`.

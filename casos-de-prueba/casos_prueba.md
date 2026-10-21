@@ -113,3 +113,35 @@ WHERE u.id IS NULL
 * **Conclusión de QA:** Se detectó una inconsistencia de integridad referencial. El pedido está asociado a un usuario inexistente. Se recomienda investigar el origen del registro y verificar que la base de datos impida asociar pedidos a usuarios no registrados.
 - **Evidencia:** Capturas de los resultados obtenidos en MySQL Workbench.
 
+# Caso de prueba SQL-006: Detectar identificadores de pedidos duplicados
+
+- **Módulo:** Pedidos.
+- **Tipo de prueba:** Validación de integridad de datos.
+- **Prioridad:** Alta.
+- **Objetivo:** Identificar identificadores de pedidos que aparecen más de una vez.
+- **Regla de negocio:** Cada pedido debe tener un identificador único.
+- **Precondiciones:** La tabla `pedidos` contiene los datos de prueba.
+
+**Pasos de ejecución:**
+
+1. Seleccionar la base de datos `ecommerce_qa`.
+2. Ejecutar la consulta de detección de identificadores duplicados.
+3. Revisar los registros devueltos.
+
+**Consulta SQL ejecutada:**
+
+```sql
+SELECT
+    id AS pedido_id,
+    COUNT(*) AS cantidad
+FROM pedidos
+GROUP BY id
+HAVING COUNT(*) > 1;
+```
+
+- **Resultado esperado:** La consulta no debe devolver registros.
+- **Resultado obtenido:** Se encontró el identificador `101` con una cantidad de `2`.
+- **Estado:** FAIL.
+- **Conclusión de QA:** Se detectó una inconsistencia en la unicidad de los identificadores de pedidos.
+- **Evidencia:** Captura del resultado de SQL-006 en MySQL Workbench.
+

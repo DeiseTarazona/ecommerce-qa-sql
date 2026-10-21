@@ -62,6 +62,18 @@ LEFT JOIN usuarios AS u
 WHERE u.id IS NULL;
 
 -- =====================================================
+-- SQL-006: Detectar identificadores de pedidos duplicados
+-- Objetivo: Identificar identificadores duplicados en la tabla pedidos
+-- Resultado esperado: La consulta no devuelve registros.
+-- =====================================================
+
+SELECT 
+	id AS id_pedidos, COUNT(*) AS cantidad
+    FROM pedidos
+    GROUP BY id
+    HAVING COUNT(*) > 1;
+
+-- =====================================================
 -- FIN DE LAS PRUEBAS DE VALIDACION
 -- =====================================================
 
