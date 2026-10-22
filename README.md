@@ -49,6 +49,7 @@ ecommerce-qa-sql/
 | SQL-003 | Detectar correos faltantes | Identificar usuarios cuyo correo electrónico es `NULL`. |
 | SQL-004 | Detectar montos inválidos | Encontrar pedidos con montos iguales o inferiores a cero. |
 | SQL-005 | Detectar pedidos sin usuario válido | Identificar pedidos asociados a usuarios inexistentes. |
+|SQL-006  |	Detectar identificadores de pedidos duplicados |
 
 ## Hallazgos identificados
 
@@ -58,6 +59,7 @@ Durante las pruebas realizadas con los datos de ejemplo se identificaron las sig
 - **Correos faltantes:** se identificó un usuario sin correo electrónico registrado.
 - **Montos inválidos:** se encontraron dos pedidos con montos de `0.00` y `-50.00`.
 - **Integridad referencial:** se identificó un pedido asociado al `usuario_id = 8`, sin un usuario correspondiente en la tabla `usuarios`.
+- **Identificadores duplicados:**  el ID de pedido 101 aparece en dos registros, correspondientes a Laptop y Audifonos.
 
 Estos hallazgos corresponden a las reglas de negocio definidas para este proyecto de práctica. No implican, por sí solos, que se haya demostrado un defecto en una aplicación real.
 

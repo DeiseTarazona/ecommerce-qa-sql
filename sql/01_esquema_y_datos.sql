@@ -9,6 +9,10 @@ CREATE DATABASE IF NOT EXISTS ecommerce_qa;
 
 USE ecommerce_qa;
 
+DROP TABLE IF EXISTS pedidos;
+DROP TABLE IF EXISTS usuarios;
+
+
 -- Tabla de usuarios
 CREATE TABLE usuarios (
     id INT PRIMARY KEY,
